@@ -1,0 +1,12 @@
+<h1>Posts</h1>
+
+<% current_user.posts.each do |post| %>
+	<h2><%= post.title %></h2>
+	<p><%= post.summary %></p>
+	<p><%= image_tag post.image.url(:thumb), class: 'img-show' if post.image? %></p>
+	<p><%= link_to 'Show', post_path(post) %></p>
+	<p><%= link_to 'Edit', edit_post_path(post) %></p>
+	<p><%= link_to 'Destroy', post_path(post),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></p>
+<% end %>	
